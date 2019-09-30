@@ -17,7 +17,7 @@ function flat_recursive(array, depth=0) {
         if (!Array.isArray(item))
             flatten.push(item);
         else
-            flatten.push(flat_recursive(item, depth - 1));
+            flatten = [...flatten, ...flat_recursive(item, depth - 1)];
     }
     return flatten;
 }
