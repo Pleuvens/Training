@@ -1,0 +1,11 @@
+{
+  "name": "training",
+  "version": "1.0.0",
+  "description": "testing and training",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Pleuvens FERVIL",
+  "license": "ISC"
+}
