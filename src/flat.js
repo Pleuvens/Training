@@ -5,19 +5,22 @@ function flat_iterative(array, depth=1) {
             res.push(item);
             continue;
         }
-        let flatten_item = [];
-        let tmp_item = [...item];
-        for (let d = 0; tmp_item.length > 0 && d < depth; d++) {
-            let delete_list = [];
-            for (let elt of tmp_item)
+        let d = 0;
+        while (d < depth && item.length > 0)
+        {
+            let current = item.shift();
+            if (!Array.isArray(current))
+                res.push(current);
+            else if (d < depth - 1)
             {
-                if (!Array.isArray(elt))
-                    flatten_item.push(elt);
+                item = [...current, ...item];
+                d++;
+            } else {
+                item = [current, ...item];
+                d++;
             }
-            for (let elt of delete_list)
-                tmp_item.remove(elt);
         }
-        res.concat(flatten_item);
+        res = [...res, ...item];
     }
     return res;
 }
