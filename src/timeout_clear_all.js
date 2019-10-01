@@ -4,11 +4,12 @@ let timeoutWrapper = (function () {
         ids.add(setTimeout(callback, timeout));
     }
     clearTimeoutWrapper(id) {
+        clearTimeout(id);
         ids.delete(id);
     }
     clearAllTimeout() {
         for (let id of ids)
-            ids.delete(id);
+            clearTimeoutWrapper(id);
     }
     return {
         setTimeoutWrapper,
